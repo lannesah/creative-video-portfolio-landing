@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+@font-face {
+    font-family: 'MusticaPro';
+    src: url('../assets/fonts/MusticaPro-SemiBold.woff2') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'nanami-pro';
+    src: url('../assets/fonts/Nanami-Rounded-Pro-Bold.woff2') format('opentype');
+}
+
+:root {
+  --bg-dark: #0f0f0f; /* Fundo escuro premium */
+  --bg-light: #f5f5f5; /* Fundo claro para as sections contrastantes */
+  --text-light: #ffffff;
+  --text-dark: #121212;
+  --font-primary: 'nanami-pro', sans-serif;
+  --font-secondary: 'MusticaPro', sans-serif;
+  --font-terciary: "Source Sans 3", sans-serif;
+  --transition-smooth: 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Curva suave de animação */
+/* Cores da Seção Editorial */
+  --editorial-bg-light: #f4f4f4; /* Aquele cinza/bege bem claro de apoio */
+  --editorial-bg-dark: #111111;  /* O preto do fundo na transição */
+  --editorial-text-light: #333333;
+  --editorial-text-dark: #ffffff;
+  
+  --editorial-transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 0.8s ease;
+}
+
+

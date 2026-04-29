@@ -1,0 +1,36 @@
+
+/* Classe base para elementos que vão surgir na tela */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px); /* Começa 60px para baixo */
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+/* Classe ativada via JavaScript quando o elemento entra na tela */
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delays para grids (faz os cards aparecerem um após o outro) */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+
+/* Animação do Menu Painel (Adicione no seu components.css ou aqui) */
+/* animations.css - MENU PANEL STATIC */
+
+.menu-panel {
+  position: fixed;
+  top: 0;
+  right: -100%; /* Escondido fora da tela */
+  width: 100%; /* No desktop pode ser 40vw ou 100% como no vídeo */
+  height: 100vh;
+  background-color: var(--bg-dark);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: right 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}

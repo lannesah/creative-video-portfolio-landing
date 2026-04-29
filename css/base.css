@@ -1,0 +1,18 @@
+body {
+  font-family: var(--font-terciary);
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  overflow-x: hidden;
+}
+
+/* Bloqueia o scroll da página inteira */
+body.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+
+.section-light {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}

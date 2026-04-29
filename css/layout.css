@@ -1,0 +1,27 @@
+.container {
+  max-width: 1920px; /* Travado para telas grandes como você pediu */
+  margin: 0 auto;
+  padding: 0 5vw; /* Margem lateral para não colar nas bordas */
+  width: 100%;
+}
+
+section {
+  padding: 120px 0; /* Espaçamento padrão entre as sessões */
+}
+
+.site-header {
+  position: fixed; /* Fixa no topo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Garante que fique acima de tudo */
+  transition: background-color 0.4s ease;
+}
+
+.site-header__inner {
+  display: flex;
+  justify-content: space-between; /* DIEGO na esquerda, MENU na direita */
+  align-items: center;
+  padding-top: 40px; /* Respiro elegante */
+  padding-bottom: 40px;
+}

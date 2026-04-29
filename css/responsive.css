@@ -1,0 +1,30 @@
+
+
+/* Ajustes para telas médias (Laptops convencionais) */
+@media (max-width: 1440px) {
+  .container {
+    padding: 0 5vw; /* Reduz a margem lateral em telas menores */
+  }
+  
+  .hero__title {
+    font-size: 3.5rem; /* Diminui um pouco o título gigante */
+  }
+}
+
+/* Preparação para o futuro (Tablets e Mobile) */
+@media (max-width: 1024px) {
+  /* No futuro, as grids de 3 colunas vão virar 2 colunas aqui */
+  .services__grid, 
+  .clients__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .menu-panel {
+    width: 60vw;
+    right: -60vw;
+  }
+}
+
+@media (max-width: 768px) {
+  /* No futuro, tudo vai virar 1 coluna para celular aqui */
+}

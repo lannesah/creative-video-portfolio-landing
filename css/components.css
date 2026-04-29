@@ -1,0 +1,87 @@
+/* components.css */
+
+.site-logo {
+  font-family: var(--font-primary);
+  font-weight: 900;
+  font-size: 2.3rem;
+  letter-spacing: -1px; /* Espaçamento premium */
+  text-transform: none;
+  color: var(--text-dark);
+}
+
+
+/* Ponto e Linha de Título */
+.section-head {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px; /* Espaço entre o ponto, linha e texto */
+  margin-bottom: 30px;
+  margin-left: 200px;
+}
+
+.section-head__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor; /* Herda a cor do texto onde estiver */
+}
+
+.section-head__line {
+  width: 50px;
+  height: 1px;
+  background-color: #555;
+  opacity: 0.7;
+}
+
+.section-head__title {
+  font-family: var(--font-secondary);
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+/* Título maior das sessões */
+.section-heading__title {
+  font-family: var(--font-terciary);
+  font-size: 3rem; /* 1. Aumentamos a fonte para ter a mesma imponência do Droow */
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--text-dark);
+  margin-bottom: 80px; /* Aumentado o respiro visual antes da Grid */
+  max-width: 900px; /* Segura a largura para o texto não espalhar demais */
+  margin-left: 160px;
+}
+
+
+/* Modificador novo para centralização */
+.section-heading--center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/*                   MENU               */
+
+.menu-panel.is-open {
+  right: 0; /* Aparece ao ativar */
+}
+
+.menu-panel__list {
+  text-align: center;
+}
+
+.menu-panel__item {
+  margin-bottom: 25px;
+}
+
+.menu-panel__link {
+  font-size: 3rem; /* Links grandes e impactantes */
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: opacity 0.3s;
+}
+
+.menu-panel__link:hover {
+  opacity: 0.5;
+}
