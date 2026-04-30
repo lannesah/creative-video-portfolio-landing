@@ -1,6 +1,6 @@
 
 /* Classe base para elementos que vão surgir na tela */
-.reveal {
+.reveal:not(.preloader) {
   opacity: 0;
   transform: translateY(60px); /* Começa 60px para baixo */
   transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
@@ -8,7 +8,7 @@
 }
 
 /* Classe ativada via JavaScript quando o elemento entra na tela */
-.reveal.active {
+.reveal.active:not(.preloader) {
   opacity: 1;
   transform: translateY(0);
 }

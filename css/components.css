@@ -1,5 +1,183 @@
 /* components.css */
 
+/* ==========================================================================
+   --- PRELOADER PREMIUM ---
+   ========================================================================== */
+.preloader {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 15, 15, 1.0); /* Cor sólida inicial baseada no --bg-dark */
+  transition: background-color 0s linear 0.5s; /* Remove o fundo de segurança no tempo exato que as portas abrem */
+  z-index: 99999; /* Garante que fique acima do header e cursor customizado */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  user-select: none;
+}
+
+.preloader.is-loaded {
+  background-color: transparent; /* Fica invisível e permite ver a página pelo meio das portas */
+}
+
+/* Painéis superior e inferior para o efeito Split Reveal */
+.preloader__panel {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  background-color: var(--bg-dark);
+  transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: transform;
+}
+
+.preloader__panel--top {
+  top: 0;
+  transform-origin: top;
+}
+
+.preloader__panel--bottom {
+  bottom: 0;
+  transform-origin: bottom;
+}
+
+.preloader.is-loaded .preloader__panel--top {
+  transform: translateY(-100%);
+  transition-delay: 0.35s;
+}
+
+.preloader.is-loaded .preloader__panel--bottom {
+  transform: translateY(100%);
+  transition-delay: 0.35s;
+}
+
+/* Wrapper do conteúdo central */
+.preloader__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Porcentagem (Marca D'água) */
+.preloader__percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-secondary);
+  font-size: clamp(10rem, 18vw, 24rem);
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.08);
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  will-change: opacity, transform;
+}
+
+.preloader.is-loaded .preloader__percent {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+/* Grupo central (Eixo) */
+.preloader__center-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Logo da marca */
+.preloader__brand {
+  font-family: var(--font-primary);
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -1px; /* Espaçamento premium */
+  color: #ffffff;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform, opacity;
+  margin-bottom: 20px;
+}
+
+.preloader.is-loaded .preloader__brand {
+  opacity: 0;
+  transform: translateY(-24px);
+  transition-delay: 0.1s;
+}
+
+/* Bolinha Central */
+.preloader__dot {
+  width: 25px;
+  height: 25px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  margin-bottom: -25px;
+  transform: translateY(4px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  transition-delay: 0.1s;
+}
+
+.preloader.is-loaded .preloader__dot {
+  opacity: 0
+}
+
+/* Linha Eixo */
+.preloader__line {
+  width: 90vw;
+  max-width: 1300px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.28);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition-delay: 0.1s;
+  position: relative;
+  z-index: 1;
+}
+
+.preloader.is-loaded .preloader__line {
+  opacity: 0;
+  transform: scaleX(0.95);
+  transition-delay: 0.2s;
+}
+
+/* Texto Loading */
+.preloader__label {
+  font-family: var(--font-terciary);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  line-height: 1.2;
+  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform, opacity;
+}
+
+.preloader.is-loaded .preloader__label {
+  opacity: 0;
+  transform: translateY(18px);
+  transition-delay: 0.15s;
+}
+
+/* Trava o scroll global enquanto carrega */
+body.is-loading {
+  overflow: hidden;
+  height: 100vh;
+}
+
 .site-logo {
   font-family: var(--font-primary);
   font-weight: 900;
