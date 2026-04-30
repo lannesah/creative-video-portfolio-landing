@@ -81,3 +81,21 @@
 .menu-panel__link:hover {
   opacity: 0.5;
 }
+
+/*                   CUSTOM CURSOR               */
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform, width, height;
+  opacity: 0; /* Esconde inicialmente até haver movimento do mouse */
+  transition: opacity 0.4s ease;
+}

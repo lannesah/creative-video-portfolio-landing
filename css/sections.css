@@ -699,6 +699,7 @@
 
 .news__nav-line:hover {
   background-color: #aaa;
+  width: 32px; /* Expansão sutil ao passar o mouse manualmente */
 }
 
 .news__nav-line.active {
@@ -706,6 +707,39 @@
   background-color: var(--text-dark);
 }
 
+/* ==========================================================================
+   EFEITO DE ONDA (WAVE) NAS LINHAS DE NAVEGAÇÃO DO CARROSSEL
+   ========================================================================== */
+
+@keyframes nav-line-wave {
+  0%, 100% {
+    width: 25px;
+    background-color: #ccc;
+  }
+  50% {
+    width: 35px;
+    background-color: #888;
+  }
+}
+
+/* Quando o container fica visível na tela (classe active adicionada pelo reveal.js) */
+.news__nav.active .news__nav-line:not(.active) {
+  animation: nav-line-wave 2.5s infinite ease-in-out;
+}
+
+/* Delays para criar o movimento fluido em cascata da esquerda para a direita */
+.news__nav.active .news__nav-line:nth-child(1) { animation-delay: 0s; }
+.news__nav.active .news__nav-line:nth-child(2) { animation-delay: 0.15s; }
+.news__nav.active .news__nav-line:nth-child(3) { animation-delay: 0.3s; }
+.news__nav.active .news__nav-line:nth-child(4) { animation-delay: 0.45s; }
+.news__nav.active .news__nav-line:nth-child(5) { animation-delay: 0.6s; }
+.news__nav.active .news__nav-line:nth-child(6) { animation-delay: 0.75s; }
+
+/* Remove a animação automática assim que o usuário passa o mouse na área, 
+   devolvendo o controle natural de transições do hover */
+.news__nav:hover .news__nav-line:not(.active) {
+  animation: none;
+}
 
 
 
