@@ -15,15 +15,22 @@
 }
 
 :root {
-  --bg-dark: #0f0f0f; /* Fundo escuro premium */
-  --bg-light: #f5f5f5; /* Fundo claro para as sections contrastantes */
-  --text-light: #ffffff;
-  --text-dark: #121212;
+  --bg-black: rgba(15, 15, 15, 1.0);
+  --bg-dark: rgba(15, 15, 15, 1.0);
+  --bg-light: rgba(245, 245, 245, 1);
+  --bg-medium-dark: rgba(85, 85, 85, 1);
+  --bg-medium-light: rgba(221, 220, 220, 1);
+  --bg-white: rgba(255, 255, 255, 1);
+  --text-light: rgba(255, 255, 255, 1);
+  --text-medium-light: rgba(221, 220, 220, 1);
+  --text-medium-dark: rgba(85, 85, 85, 1);
+  --text-dark: rgba(18, 18, 18, 1);
   --font-primary: 'nanami-pro', sans-serif;
   --font-secondary: 'MusticaPro', sans-serif;
   --font-terciary: "Source Sans 3", sans-serif;
   --transition-smooth: 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Curva suave de animação */
-/* Cores da Seção Editorial */
+
+  /* Cores da Seção Editorial */
   --editorial-bg-light: #f4f4f4; /* Aquele cinza/bege bem claro de apoio */
   --editorial-bg-dark: #111111;  /* O preto do fundo na transição */
   --editorial-text-light: #333333;

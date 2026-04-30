@@ -4,6 +4,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuPanel = document.querySelector('.menu-panel');
   const menuToggle = document.querySelector('.menu-toggle');
 
+  // Ativa o clique no menu (Transforma as 3 linhas em 'X' e abre o painel)
+  if (menuToggle && menuPanel) {
+    menuToggle.addEventListener('click', () => {
+      menuPanel.classList.toggle('is-open');
+      menuToggle.classList.toggle('is-active');
+      
+      const isOpen = menuPanel.classList.contains('is-open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      menuPanel.setAttribute('aria-hidden', !isOpen);
+      
+      document.body.classList.toggle('no-scroll', isOpen);
+    });
+  }
+
   anchorLinks.forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
@@ -35,10 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     initVideoHoverEffect();
     initAboutHoverEffect();
-    initParallaxEffect();
+    initGlobalParallax();
     initTestimonialsParallaxEffect();
     initTestimonialsSlider();
     initClientsToggle();
+    initHeaderScroll();
 });
 
 // Função para ativar a transição ao passar o mouse no botão '+'
@@ -60,6 +75,35 @@ function initClientsToggle() {
             card.classList.remove('is-active');
         });
     });
+}
+
+function initHeaderScroll() {
+    const header = document.querySelector('.site-header');
+    if (!header) return;
+
+    let lastScrollY = window.scrollY;
+    const heroSection = document.getElementById('hero');
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
+
+        // 1. Esconde ao rolar para baixo e mostra ao rolar para cima (a partir de uma pequena margem do topo)
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            header.classList.add('site-header--hidden');
+        } else {
+            header.classList.remove('site-header--hidden');
+        }
+
+        // 2. Muda o fundo para Dark quando sair da Hero
+        if (currentScrollY > heroHeight - 80) {
+            header.classList.add('site-header--dark');
+        } else {
+            header.classList.remove('site-header--dark');
+        }
+
+        lastScrollY = currentScrollY;
+    }, { passive: true });
 }
 
 function initAboutHoverEffect() {
@@ -110,14 +154,29 @@ function initVideoHoverEffect() {
     });
 }
 
-function initParallaxEffect() {
-    const banner = document.querySelector('.identity-banner');
-    const image = document.querySelector('.identity-banner__image');
+function initGlobalParallax() {
+    // Pega todas as grandes imagens/blocos que farão parallax
+    const parallaxElements = document.querySelectorAll('.hero__image, .about__media, .identity-banner__image, .editorial__image');
 
-    if (!banner || !image) return;
+    if (parallaxElements.length === 0) return;
 
-    let currentY = 0;
-    let targetY = 0;
+    // Guarda os estados de cada elemento independentemente
+    const parallaxData = Array.from(parallaxElements).map(el => {
+        let container = el.parentElement;
+        // Na seção About, usamos o bloco interno maior para referência de visibilidade
+        if (el.classList.contains('about__media')) {
+            container = el.closest('.about__inner') || container;
+        }
+        
+        return {
+            el: el,
+            container: container,
+            currentY: 0,
+            targetY: 0,
+            intensity: 10 // O movimento vai de -10% a +10%
+        };
+    });
+
     let isAnimating = false;
     let ticking = false;
 
@@ -125,35 +184,45 @@ function initParallaxEffect() {
     const lerp = (start, end, factor) => start + (end - start) * factor;
 
     function animate() {
-        currentY = lerp(currentY, targetY, 0.08); // 0.08 define a velocidade de suavização
+        let needsMoreAnimation = false;
 
-        if (Math.abs(targetY - currentY) < 0.05) {
-            currentY = targetY;
-            isAnimating = false;
-        }
+        parallaxData.forEach(data => {
+            data.currentY = lerp(data.currentY, data.targetY, 0.08); // 0.08 define a velocidade de suavização
 
-        image.style.transform = `translate3d(0, ${currentY}%, 0)`;
+            if (Math.abs(data.targetY - data.currentY) > 0.05) {
+                needsMoreAnimation = true;
+            } else {
+                data.currentY = data.targetY;
+            }
 
-        if (isAnimating) {
+            data.el.style.transform = `translate3d(0, ${data.currentY}%, 0)`;
+        });
+
+        if (needsMoreAnimation) {
             requestAnimationFrame(animate);
+        } else {
+            isAnimating = false;
         }
     }
 
     function updateTarget() {
-        const rect = banner.getBoundingClientRect();
         const windowHeight = window.innerHeight;
 
-        // Se a seção está visível na tela
-        if (rect.top <= windowHeight && rect.bottom >= 0) {
-            const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+        parallaxData.forEach(data => {
+            const rect = data.container.getBoundingClientRect();
             
-            // targetY define o limite do movimento: varia de -10% a 10%
-            targetY = (progress - 0.5) * 20; 
-
-            if (!isAnimating) {
-                isAnimating = true;
-                requestAnimationFrame(animate);
+            // Se o elemento estiver visível na tela
+            if (rect.top <= windowHeight && rect.bottom >= 0) {
+                const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+                
+                // targetY define o limite do movimento variando baseado na intensidade
+                data.targetY = (progress - 0.5) * (data.intensity * 2); 
             }
+        });
+
+        if (!isAnimating) {
+            isAnimating = true;
+            requestAnimationFrame(animate);
         }
         ticking = false;
     }
@@ -167,8 +236,10 @@ function initParallaxEffect() {
 
     // Posição inicial forçada para não haver salto no carregamento
     updateTarget();
-    currentY = targetY;
-    image.style.transform = `translate3d(0, ${currentY}%, 0)`;
+    parallaxData.forEach(data => {
+        data.currentY = data.targetY;
+        data.el.style.transform = `translate3d(0, ${data.currentY}%, 0)`;
+    });
 }
 
 document.addEventListener("DOMContentLoaded", () => {

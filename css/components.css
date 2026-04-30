@@ -63,10 +63,6 @@
 
 /*                   MENU               */
 
-.menu-panel.is-open {
-  right: 0; /* Aparece ao ativar */
-}
-
 .menu-panel__list {
   text-align: center;
 }
