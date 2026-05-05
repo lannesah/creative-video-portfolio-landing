@@ -14,7 +14,7 @@ section {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000; /* Garante que fique acima de tudo */
+  z-index: var(--z-index-header); /* Garante que fique acima de tudo */
   transition: background-color 0.4s ease, transform 0.4s ease;
 }
 

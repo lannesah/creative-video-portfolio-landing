@@ -24,7 +24,7 @@
 .menu-panel {
   position: fixed;
   inset: 0; /* Ocupa a tela toda */
-  z-index: 99;
+  z-index: var(--z-index-menu-panel);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,7 +50,7 @@
   width: 50vw;
   height: 100vh;
   background-color: rgba(15, 15, 15, 0.65); /* Quase transparente dark */
-  z-index: 1;
+  z-index: var(--z-index-base);
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 0.9); /* A transição de fechar é definida aqui */
   transition-delay: 0.35s; /* Delay ao fechar (sai por último, após as portas sólidas) */
 }
@@ -81,7 +81,7 @@
   width: 50.1vw; /* 0.1vw extra para evitar fresta no centro da tela */
   height: 100vh;
   background-color: var(--bg-dark); /* Totalmente dark */
-  z-index: 2; /* Fica acima da folha transparente */
+  z-index: var(--z-index-content); /* Fica acima da folha transparente */
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Transição de fechar */
   transition-delay: 0.2s; /* Delay ao fechar (espera os itens sumirem) */
 }
@@ -105,7 +105,7 @@
 /* TEXTOS DO MENU: Trazendo para frente e adicionando animação em cascata */
 .menu-panel__item {
   position: relative;
-  z-index: 10; /* Garante que os links fiquem muito acima das folhas escuras (z-index: 2) */
+  z-index: var(--z-index-menu-items); /* Garante que os links fiquem muito acima das folhas escuras (z-index: 2) */
   opacity: 0;
   transform: translateY(25px); /* Um pouco mais de distância para um fade-up mais premium */
   /* A transição de fechar é rápida (0.3s) e acontece imediatamente (sem delay) */

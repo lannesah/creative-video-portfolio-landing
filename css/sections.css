@@ -8,7 +8,7 @@
   align-items: center;
   gap: 15px; /* Espaço entre a palavra e as linhas */
   cursor: pointer;
-  z-index: 101; /* Fica acima do painel do menu */
+  z-index: var(--z-index-menu-toggle); /* Fica acima do painel do menu */
 }
 
 .menu-toggle__label {
@@ -81,7 +81,7 @@
 .hero__media {
   position: absolute;
   inset: 0;
-  z-index: -2;
+  z-index: var(--z-index-background);
   overflow: hidden;
 }
 
@@ -101,7 +101,7 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(to right, var(--bg-dark) -10%, rgba(15, 15, 15, 0.6) 30%, rgba(15, 15, 15, 0) 60%);
-  z-index: -1;
+  z-index: var(--z-index-background-overlay);
 }
 
 /* Limita o espalhamento do texto e garante alinhamento */
@@ -216,7 +216,7 @@
 /* --- Left Column: Texto e Hierarquia --- */
 .about__content {
   position: relative; /* Essencial: o z-index só funciona em elementos posicionados */
-  z-index: 2; /* Garante que o texto fique ACIMA do fundo cinza que vai invadir */
+  z-index: var(--z-index-content); /* Garante que o texto fique ACIMA do fundo cinza que vai invadir */
 }
 
 .about__title {
@@ -228,7 +228,7 @@
   
   /* --- A MÁGICA DO BROKEN GRID --- */
   position: relative; /* 3. Prepara o elemento para receber Z-index */
-  z-index: 3; /* 4. Joga o texto para cima do fundo cinza */
+  z-index: var(--z-index-content-high); /* 4. Joga o texto para cima do fundo cinza */
   
   /* Ajuste fino de posicionamento */
   margin-top: -50px; /* Sobe o título um pouco para não ficar perfeitamente centralizado com a foto */
@@ -354,12 +354,12 @@
 
 .about__media-wrap {
   position: relative;
-  z-index: 1; /* Cria um "universo fechado" (Stacking Context) para as camadas internas */
+  z-index: var(--z-index-base); /* Cria um "universo fechado" (Stacking Context) para as camadas internas */
 }
 
 .about__media {
   position: relative;
-  z-index: 2; /* Fica acima do background cinza */
+  z-index: var(--z-index-content); /* Fica acima do background cinza */
   padding: 90px 35px; /* A MÁGICA: Este padding é o que cria a moldura, espremendo a imagem pra dentro! */
   display: grid;
   grid-template-areas: "stack";
@@ -406,7 +406,7 @@
   left: -80px; /* A JOGADA: O fundo cinza invade a área do texto na esquerda */
   right: -50vw; /* Estica infinitamente para a direita da tela */
   background-color: #dddcdc; /* O tom de cinza sólido que cria o contraste premium */
-  z-index: 1; /* Fica atrás da imagem e do texto da outra coluna */
+  z-index: var(--z-index-base); /* Fica atrás da imagem e do texto da outra coluna */
 }
 
 
@@ -444,7 +444,7 @@
 
 .service-card:hover {
   transform: scale(1.05);
-  z-index: 2;
+  z-index: var(--z-index-content);
   box-shadow: 0 30px 60px rgba(0,0,0, 0.20);
 }
 
@@ -502,7 +502,7 @@
   left: 0;
   right: 0;
   height: 120%; /* Tamanho extra para permitir a movimentação do parallax sem revelar bordas */
-  z-index: -2;
+  z-index: var(--z-index-background);
   overflow: hidden;
 }
 
@@ -602,7 +602,7 @@
 .news-card.active {
   opacity: 1;
   transform: scale(1.05);
-  z-index: 2;
+  z-index: var(--z-index-content);
 }
 
 /* Container do Vídeo (4:5) */
@@ -642,7 +642,7 @@
   background-color: #e6e6e6 ; /* Mesma cor de fundo da seção */
   padding: 35px 30px;
   margin: -80px -1px 10px 25px; /* Margem negativa top FAZ SUBIR. Margem lateral APERTA o bloco. */
-  z-index: 3;
+  z-index: var(--z-index-content-high);
   transition: background-color 0.4s ease;
 }
 
@@ -770,7 +770,7 @@
   gap: 0; /* Zera o espaço central para a imagem encostar exatamente no meio da tela */
   align-items: center;
   position: relative;
-  z-index: 2; /* Fica acima do fundo decorativo */
+  z-index: var(--z-index-content); /* Fica acima do fundo decorativo */
 }
 
 /* --- A Imagem Vertical --- */
@@ -797,7 +797,7 @@
 .editorial__bg-wrapper {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: var(--z-index-base);
   pointer-events: none; /* Para não atrapalhar o clique em botões */
 }
 
