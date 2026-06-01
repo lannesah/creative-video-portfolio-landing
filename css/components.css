@@ -155,7 +155,7 @@
 /* Texto Loading */
 .preloader__label {
   font-family: var(--font-terciary);
-  font-size: 0.95rem;
+  font-size: var(--font-size-caption);
   font-weight: 400;
   color: rgba(255, 255, 255, 0.72);
   letter-spacing: 10px;
@@ -213,6 +213,7 @@ body.is-loading {
 
 .section-head__title {
   font-family: var(--font-secondary);
+  font-size: var(--font-size-caption);
   color: #555;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -220,7 +221,7 @@ body.is-loading {
 /* Título maior das sessões */
 .section-heading__title {
   font-family: var(--font-terciary);
-  font-size: 3rem; /* 1. Aumentamos a fonte para ter a mesma imponência do Droow */
+  font-size: var(--font-size-heading); /* 1. Aumentamos a fonte para ter a mesma imponência do Droow */
   font-weight: 800;
   line-height: 1.05;
   color: var(--text-dark);
@@ -250,7 +251,7 @@ body.is-loading {
 }
 
 .menu-panel__link {
-  font-size: 3rem; /* Links grandes e impactantes */
+  font-size: var(--font-size-heading); /* Links grandes e impactantes */
   font-weight: 700;
   text-transform: uppercase;
   transition: opacity 0.3s;

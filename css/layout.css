@@ -1,5 +1,4 @@
 .container {
-  max-width: 1920px; /* Travado para telas grandes como você pediu */
   margin: 0 auto;
   padding: 0 5vw; /* Margem lateral para não colar nas bordas */
   width: 100%;

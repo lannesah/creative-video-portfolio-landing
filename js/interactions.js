@@ -244,59 +244,70 @@ function initGlobalParallax() {
 
 document.addEventListener("DOMContentLoaded", () => {
   
-  // Seleciona a seção editorial
-  const editorialSection = document.querySelector('.editorial');
-  
-  if (editorialSection) {
-    // Configura o observador
-    const observerOptions = {
-      root: null, // usa o viewport como área de detecção
-      rootMargin: "0px",
-      // threshold 0.5 significa: ative quando 50% da seção estiver visível na tela
-      threshold: 0.5 
-    };
+    // Controla a transição Dark do featured usando a seção news como limite.
+    const newsSection = document.querySelector('.news');
+    const editorialSection = document.querySelector('.editorial');
 
-    const editorialObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Quando a seção chegar na metade da tela, adiciona a classe dark
-          entry.target.classList.add('is-dark');
-        } else if (entry.boundingClientRect.top > 0) {
-          // Se o usuário rolou para CIMA (a seção saiu por baixo da tela), remove o dark.
-          // Se rolou para BAIXO e foi para a seção "Testimonials" (top < 0), o código
-          // não entra aqui e o fundo continuará dark!
-          entry.target.classList.remove('is-dark');
-        }
-      });
-    }, observerOptions);
+    if (newsSection && editorialSection) {
+        let editorialDark = false;
 
-    // Inicia a observação da seção
-    editorialObserver.observe(editorialSection);
-  }
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5
+        };
 
-  // Seleciona a seção de depoimentos
-  const testimonialsSection = document.querySelector('.testimonials');
-  
-  if (testimonialsSection) {
-    const testimonialsObserverOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.5 // Quando a seção estiver 50% visível na tela (50% oculta)
-    };
+        const newsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.intersectionRatio < 0.5 && !editorialDark) {
+                    editorialSection.classList.add('is-dark');
+                    editorialDark = true;
+                } else if (entry.intersectionRatio >= 0.5 && editorialDark) {
+                    editorialSection.classList.remove('is-dark');
+                    editorialDark = false;
+                }
+            });
+        }, observerOptions);
 
-    const testimonialsObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        // Se a seção está sumindo (menos de 50%) e o usuário rolou para baixo (saindo por cima)
-        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
-          entry.target.classList.add('is-light');
-        } else {
-          entry.target.classList.remove('is-light');
-        }
-      });
-    }, testimonialsObserverOptions);
+        newsObserver.observe(newsSection);
+    }
 
-    testimonialsObserver.observe(testimonialsSection);
-  }
+    const testimonialsSection = document.querySelector('.testimonials');
+    if (testimonialsSection) {
+        // Vamos alternar o estado quando a seção cruzar a região de centralização.
+        let lastCentered = false;
+
+        const updateTestimonialsState = () => {
+            const rect = testimonialsSection.getBoundingClientRect();
+            const sectionCenter = rect.top + rect.height / 2;
+            const viewportCenter = window.innerHeight / 2;
+            const activationDistance = Math.min(window.innerHeight * 0.18, rect.height * 0.22);
+            const offset = sectionCenter - viewportCenter;
+            const centered = Math.abs(offset) <= activationDistance;
+
+            // Detecta a transição ao entrar na zona centralizada
+            if (centered && !lastCentered) {
+                testimonialsSection.classList.toggle('is-light');
+            }
+
+            lastCentered = centered;
+        };
+
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateTestimonialsState();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        window.addEventListener('resize', () => requestAnimationFrame(updateTestimonialsState));
+        updateTestimonialsState();
+    }
+
 });
 
 function initTestimonialsParallaxEffect() {

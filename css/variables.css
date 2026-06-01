@@ -30,6 +30,27 @@
   --font-terciary: "Source Sans 3", sans-serif;
   --transition-smooth: 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Curva suave de animação */
 
+
+
+  /* Escala tipográfica semântica */
+  --font-size-display: clamp(1.8rem, 6vw, 5.5rem);      /* Hero principal e peças de impacto grande */
+  --font-size-heading: clamp(1.2rem, 3.2vw, 3.8rem);     /* Títulos de sessão e blocos principais */
+  --font-size-subtitle: 1.3rem;                          /* Subtítulos, chamadas e labels secundárias */
+  --font-size-body: 1.15rem;                             /* Texto de parágrafo e apoio */
+  --font-size-caption: 0.95rem;                          /* Legendas, spans e pequenas informações */
+
+  --line-height-display: 1.05;
+  --line-height-heading: 1.12;
+  --line-height-subtitle: 1.4;
+  --line-height-body: 1.8;
+  --line-height-caption: 1.6;
+
+  --letter-spacing-display: -0.04em;
+  --letter-spacing-heading: -0.02em;
+  --letter-spacing-subtitle: 0.01em;
+  --letter-spacing-body: 0em;
+  --letter-spacing-caption: 0.02em;
+
   /* Cores da Seção Editorial */
   --editorial-bg-light: #f4f4f4; /* Aquele cinza/bege bem claro de apoio */
   --editorial-bg-dark: #111111;  /* O preto do fundo na transição */

@@ -1,5 +1,3 @@
-/* sections.css */
-
 
 /* sections.css - HEADER SECTION */
 
@@ -12,7 +10,7 @@
 }
 
 .menu-toggle__label {
-  font-size: 1.2rem;
+  font-size: var(--font-size-body);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -125,7 +123,7 @@
 }
 
 .hero__eyebrow {
-  font-size: 0.85rem;
+  font-size: var(--font-size-caption);
   font-weight: 700;
   letter-spacing: 4px; /* Letras espaçadas */
   text-transform: uppercase;
@@ -133,15 +131,15 @@
 
 /* Título maior, com letras mais juntas e altura de linha espremida */
 .hero__title {
-  font-size: 5.5rem;
+  font-size: var(--font-size-display);
   font-family: var(--font-secondary);
-  line-height: 1.05;
+  line-height: var(--line-height-display);
   letter-spacing: 3px; 
   margin-bottom: 30px;
 }
 
 .hero__description {
-  font-size: 1.1rem;
+  font-size: var(--font-size-body);
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.7); /* Contraste reduzido para o título brilhar mais */
   margin-bottom: 50px;
@@ -185,7 +183,7 @@
 }
 
 .hero__cta-text {
-  font-size: 0.85rem;
+  font-size: var(--font-size-caption);
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -201,7 +199,7 @@
    ==========================================================================*/
 
 .about {
-  overflow: visible; /* Garante que o fundo decorativo deslocado não gere scroll horizontal indesejado */
+  overflow: hidden; /* Garante que o fundo decorativo deslocado não gere scroll horizontal indesejado */
 }
 
 /* Estrutura e Composição */
@@ -221,7 +219,7 @@
 
 .about__title {
   font-family: var(--font-terciary);
-  font-size: 3.5rem; /* 1. Aumentamos a fonte para ter a mesma imponência do Droow */
+  font-size: var(--font-size-heading); /* 1. Aumentamos a fonte para ter a mesma imponência do Droow */
   font-weight: 800;
   line-height: 1.05;
   color: var(--text-dark);
@@ -245,7 +243,7 @@
 
 .about__text {
   grid-area: stack;
-  font-size: 1.15rem;
+  font-size: var(--font-size-body);
   line-height: 1.9;
   color: rgba(85, 85, 85, 1); /* Um cinza um pouco mais leve que o título para não brigar pela atenção */
   margin-bottom: 0; 
@@ -288,7 +286,7 @@
 
 .about__name {
   font-weight: 700;
-  font-size: 1.35rem;
+  font-size: var(--font-size-subtitle);
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 0; /* Zera a margem pois o flexbox já alinha */
@@ -317,7 +315,7 @@
 
 .about__profissao {
   display: block;
-  font-size: 1.2rem;
+  font-size: var(--font-size-caption);
   color: #888;
 }
 
@@ -331,19 +329,18 @@
 
 .about__experience-number {
   font-family: var(--font-secondary);
-  font-size: 13rem; 
+  font-size: clamp(5.4rem, 12vw, 10.5rem);
   font-weight: 700;
-  line-height: 0.8;
   color: var(--text-dark);
   display: block; /* Adicione isso para evitar que ele se comporte como texto comum e desalinhado */
 }
 
 .about__experience-label {
-  font-size: 1.8rem;
+  font-size: var(--font-size-subtitle);
   font-weight: 400;
   letter-spacing: 2px;
   text-transform: uppercase;
-  max-width: 300px; /* Um pouco mais largo para acomodar o texto digital */
+  max-width: 400px; /* Um pouco mais largo para acomodar o texto digital */
   line-height: 1.5;
   color: var(--text-dark);
 }
@@ -462,6 +459,7 @@
 
 .service-card__title {
   font-family: var(--font-secondary);
+  font-size: var(--font-size-subtitle);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -470,7 +468,7 @@
 }
 
 .service-card__text {
-  font-size: 1.1rem;
+  font-size: var(--font-size-body);
   line-height: 1.8; /* Aumentado para conforto visual */
   color: #666;
   max-width: 320px; /* Trava a largura para ficar um bloquinho alinhado */
@@ -535,7 +533,7 @@
 
 .identity-banner__title {
   font-family: var(--font-secondary); /* MusticaPro */
-  font-size: 3rem; /* Tamanho imponente do vídeo */
+  font-size: var(--font-size-heading); /* Tamanho imponente do vídeo */
   font-weight: 700;
   line-height: 1.1;
   color: var(--text-light);
@@ -544,7 +542,7 @@
 
 .identity-banner__text {
   font-family: var(--font-terciary); /* Source Sans 3 */
-  font-size: 1.1rem;
+  font-size: var(--font-size-body);
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 40px;
@@ -655,7 +653,7 @@
 .news-card__meta {
   display: block;
   font-family: var(--font-terciary);
-  font-size: 0.85rem;
+  font-size: var(--font-size-caption);
   letter-spacing: 1px;
   text-transform: uppercase;
   color: #888;
@@ -672,7 +670,7 @@
 
 .news-card__text {
   font-family: var(--font-terciary);
-  font-size: 1.05rem;
+  font-size: var(--font-size-body);
   color: #555;
   line-height: 1.7;
 }
@@ -845,7 +843,7 @@
 /* Hierarquia Tipográfica (Mudando de cor no Dark Mode) */
 .editorial__title {
   font-family: var(--font-secondary);
-  font-size: 3.5rem;
+  font-size: var(--font-size-heading);
   line-height: 1.5;
   font-weight: 700;
   color: var(--text-dark);
@@ -859,7 +857,7 @@
 }
 
 .editorial__subtitle {
-  font-size: 1.3rem;
+  font-size: var(--font-size-subtitle);
   font-weight: 700;
   color: var(--text-dark);
   margin-bottom: 35px;
@@ -873,7 +871,7 @@
 
 .editorial__text {
   font-family: var(--font-terciary);
-  font-size: 1.15rem;
+  font-size: var(--font-size-body);
   line-height: 1.8;
   color: #555;
   margin-bottom: 50px;
@@ -928,7 +926,7 @@
 
 .editorial__cta-text {
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: var(--font-size-caption);
   letter-spacing: 2px;
   text-transform: uppercase;
 }
@@ -947,7 +945,8 @@
   transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.testimonials.is-light {
+.testimonials.is-light,
+.testimonials.section-light {
   background-color: var(--bg-light);
 }
 
@@ -969,11 +968,12 @@
 
 .testimonials__title {
   font-family: var(--font-secondary);
-  font-size: 3.8rem;
+  font-size: var(--font-size-heading);
   font-weight: 800;
   line-height: 1.1;
   color: #e8e8e8; /* Cinza bem claro, quase branco */
   letter-spacing: -1px;
+  transition: color 0.8s ease;
 }
 
 /* O Retângulo Escuro de Fundo */
@@ -985,7 +985,8 @@
   transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.testimonials.is-light .testimonials__card {
+.testimonials.is-light .testimonials__card,
+.testimonials.section-light .testimonials__card {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
@@ -1016,13 +1017,14 @@
 /* Texto do Depoimento */
 .testimonial-item__text {
   font-family: var(--font-terciary);
-  font-size: 1.35rem;
+  font-size: var(--font-size-subtitle);
   font-style: italic;
   font-weight: 400;
   line-height: 1.8;
   color: #c4c4c4; /* Cinza médio/claro */
   margin-bottom: 40px;
   max-width: 650px;
+  transition: color 0.8s ease;
 }
 
 /* Bloco do Autor */
@@ -1041,10 +1043,11 @@
 
 .testimonial-item__info {
   font-family: var(--font-terciary);
-  font-size: 1.3rem;
+  font-size: var(--font-size-subtitle);
   font-weight: 600;
   color: #ffffff;
   letter-spacing: 0.5px;
+  transition: color 0.8s ease;
 }
 
 .testimonial-item__dash {
@@ -1087,10 +1090,10 @@
 /* Aspas Gigantes Decorativas */
 .testimonials__quotes {
   position: absolute;
-  bottom: -50px; /* Vaza para fora do card na parte de baixo */
+  bottom: -35px; /* Vaza para fora do card na parte de baixo */
   right: 50px;
   font-family: var(--font-terciary);
-  font-size: 16rem;
+  font-size: clamp(5.4rem, 12vw, 10.5rem);
   font-weight: 800;
   color: #ffffff;
   line-height: 0;
@@ -1099,8 +1102,29 @@
   transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.testimonials.is-light .testimonials__quotes {
+.testimonials.is-light .testimonials__quotes,
+.testimonials.section-light .testimonials__quotes {
   color: var(--text-dark);
+}
+
+.testimonials.is-light .testimonials__title,
+.testimonials.section-light .testimonials__title {
+  color: var(--text-dark);
+}
+
+.testimonials.is-light .testimonial-item__text,
+.testimonials.section-light .testimonial-item__text {
+  color: rgba(18, 18, 18, 0.87);
+}
+
+.testimonials.is-light .testimonial-item__info,
+.testimonials.section-light .testimonial-item__info {
+  color: rgba(18, 18, 18, 0.9);
+}
+
+.testimonials.is-light .testimonials__dot.active,
+.testimonials.section-light .testimonials__dot.active {
+  background-color: var(--text-dark);
 }
 
 
@@ -1204,7 +1228,7 @@
 
 
 
-/* --- 9. CLIENTS / CAPACIDADES (Efeito do fundo branco subindo) --- */
+/* --- 8. CLIENTS / CAPACIDADES (Efeito do fundo branco subindo) --- */
 .clients {
   background-color: var(--bg-light);
 }
@@ -1232,16 +1256,7 @@
   transition: opacity 0.3s;
   text-align: center;
    font-family: var(--font-secondary);
-  font-size: 2rem;
-}
-
-/* Camada Sobreposta Escondida */
-.client-card__hover-layer {
-  position: absolute;
-  inset: 0;
-  background-color: var(--bg-light); /* Fundo claro */
-  font-family: var(--font-terciary);
-  font-size: 1.35rem;
+  font-size: var(--font-size-heading);
   font-style: italic;
   letter-spacing: 0.5px;
   padding: 40px;
@@ -1343,7 +1358,7 @@
 
 .cta-banner__title {
   font-family: var(--font-terciary); /* MusticaPro, a mesma fonte dos títulos grandes */
-  font-size: 4.5rem; /* Escala gigante para ser a âncora visual */
+  font-size: var(--font-size-display); /* Escala gigante para ser a âncora visual */
   font-weight: 900;
   line-height: 1.05;
   text-transform: uppercase;
@@ -1357,7 +1372,7 @@
 
 .cta-banner__text {
   font-family: var(--font-terciary);
-  font-size: 1.1rem;
+  font-size: var(--font-size-body);
   line-height: 1.6;
   font-weight: 600;
   color: var(--text-dark);
@@ -1447,7 +1462,7 @@
   border-radius: 50%;
   text-decoration: none;
   color: #111; /* Cor inicial do ícone */
-  font-size: 0.9rem;
+  font-size: var(--font-size-caption);
   font-weight: 600;
   overflow: hidden; /* Esconde o preenchimento que vaza */
   transition: color 0.4s ease, border-color 0.4s ease; /* Transições mais específicas */
@@ -1517,7 +1532,7 @@
 
 .footer-list li {
   margin-bottom: 15px;
-  font-size: 1rem;
+  font-size: var(--font-size-caption);
   letter-spacing: 1.5px;
   color: #555;
   text-transform: uppercase;
@@ -1536,7 +1551,7 @@
 }
 
 .email-link {
-  font-size: 0.90rem;
+  font-size: var(--font-size-caption);
 }
 
 /* =========================================
@@ -1569,7 +1584,7 @@
 /* Endereço (Tirando o itálico padrão da tag address) */
 .footer-address {
   font-style: normal;
-  font-size: 1rem; /* Tamanho igualado ao da .footer-list li */
+  font-size: var(--font-size-caption); /* Tamanho igualado ao da .footer-list li */
   letter-spacing: 1.5px;
   color: #555;
   line-height: 1.8;

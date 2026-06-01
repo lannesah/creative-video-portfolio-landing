@@ -1,7 +1,7 @@
 body {
   font-family: var(--font-terciary);
-  background-color: var(--bg-dark);
-  color: var(--text-light);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
   overflow-x: hidden;
 }
 
@@ -15,4 +15,14 @@ body.no-scroll {
 .section-light {
   background-color: var(--bg-light);
   color: var(--text-dark);
+}
+
+.section-dark {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+.hero.section-dark,
+.identity-banner.section-dark {
+  background-color: transparent;
 }

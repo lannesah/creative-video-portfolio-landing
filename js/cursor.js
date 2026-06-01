@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (isTouchDevice || prefersReducedMotion) {
+  if (prefersReducedMotion) {
     cursor.style.display = 'none';
     return;
   }
@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let targetSize = baseSize;
   let currentSize = baseSize;
   let isVisible = false;
+  let touchUsed = false;
 
   // Seletores inteligentes - Todos os elementos que farão a bolinha expandir (inclui os elementos customizados que já existem na sua landing page)
   const hoverSelectors = 'a, button, .cursor-expand, .work-card, .client-card, .service-card, .news-card, .testimonials__dot, .news__nav-line';
@@ -50,6 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
     cursor.style.opacity = '0';
     isVisible = false;
   });
+
+  window.addEventListener('touchstart', () => {
+    touchUsed = true;
+    cursor.style.display = 'none';
+  }, { once: true, passive: true });
 
   const lerp = (start, end, factor) => start + (end - start) * factor;
 
